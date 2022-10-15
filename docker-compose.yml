@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  minihack:
+    build: .
+    command: python /app/main.py
+    volumes:
+      - ./:/app
+    
