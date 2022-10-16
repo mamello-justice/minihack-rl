@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable individual control
+\newcommand\section@cntformat{}     % section level 
+\makeatother
+
+\begin{document}
+
+\section{Reinforcement Learning}
+
+\subsection{Value-function based methods}
+
+\subsubsection{Deep Q-Networks (DQN)}
+
+\subsubsection{Double Deep Q-Networks (DDQN)}
+
+\subsection{Model-based methods}
+
+\subsubsection{Simulated Policy Learning (SimPle)}
+
+\subsection{Policy-based methods}
+
+\subsubsection{REINFORCE}
+
+\subsubsection{Actor-Critic}
+
+\subsubsection{Off-Policy Policy Gradient}
+
+\subsection{Hierarchical methods}
+
+\end{document}
