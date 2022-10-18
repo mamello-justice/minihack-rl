@@ -1,5 +1,21 @@
 \documentclass{article}
 
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage{soul}
+
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+\newcommand{\balpha}{\bm{\alpha}}
+\newcommand{\bbeta}{\bm{\beta}}
+\newcommand{\btheta}{\bm{\theta}}
+
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \makeatletter
 \def\@seccntformat#1{\@ifundefined{#1@cntformat}%
@@ -16,9 +32,25 @@
 
 \subsubsection{Deep Q-Networks (DQN)}
 
+$Q^{\pi}(s,a) = \mathbb{E}[ R_{t+1} | s_t = s, a_t = a, \pi ]$\\[10px]
+$Y_t^{DQN} \equiv R_{t+1} + \gamma \max_a Q(S_{t+1},a; \btheta_t^-)$\\[10px]
+$\nabla_{\theta_t}L_t(\theta_t) = \mathbb{E}\biggl[ \biggl($\mathcolorbox{green}{Y_t^{DQN} - Q(s,a;\theta_t)}$\biggr) \nabla_{\theta_t} Q(s,a; \theta_t) \biggr]$
+
 \subsubsection{Double Deep Q-Networks (DDQN)}
 
+$Q^{\pi}(s,a) = \mathbb{E}[ R_{t+1} | s_t = s, a_t = a, \pi ]$\\[10px]
+$Y_t^{DDQN} \equiv R_{t+1} + \gamma Q\biggl(S_{t+1}, $\mathcolorbox{yellow}{\argmax_a Q(S_{t+1},a; \btheta_t)}$; \btheta_t^-\biggr)$\\[10px]
+$\nabla_{\theta_t}L_t(\theta_t) = \mathbb{E}\biggl[ \biggl($\mathcolorbox{green}{Y_t^{DDQN} - Q(s,a;\theta_t)}$\biggr) \nabla_{\theta_t} Q(s,a; \theta_t) \biggr]$
+
 \subsubsection{Dueling Deep Q-Networks}
+
+$Q^{\pi}(s,a) = \mathbb{E}[ R_{t+1} | s_t = s, a_t = a, \pi ]$\\[10px]
+$V^{\pi}(s,a) = \mathbb{E}[Q^{\pi}(s,a)]$\\[10px]
+$Q^{\pi}(s,a; \btheta, \balpha, \bbeta) = V^{\pi}(s; \btheta, \bbeta) + A^{\pi}(s,a; \btheta, \balpha)$\\[10px]
+$Q^{\pi}(s,a; \btheta, \balpha, \bbeta) = V^{\pi}(s; \btheta, \bbeta) + \biggl(A^{\pi}(s,a; \btheta, \balpha) - \max_{a' \in |\mathcal{A}|} A^{\pi}(s,a; \btheta, \balpha)\biggr)$\\[10px]
+$Q^{\pi}(s,a; \btheta, \balpha, \bbeta) = V^{\pi}(s; \btheta, \bbeta) + \biggl(A^{\pi}(s,a; \btheta, \balpha) - \frac{1}{|\mathcal{A}|} \Sigma_{a'} A^{\pi}(s,a; \btheta, \balpha)\biggr)$ (Alternative)\\[10px]
+$Y_t^Q \equiv R_{t+1} + \gamma \max_a Q(S_{t+1},a; \btheta_t^-)$\\[10px]
+$\nabla_{\theta_t}L_t(\theta_t) = \mathbb{E}\biggl[ \biggl($\mathcolorbox{green}{Y_t^Q - Q(s,a;\theta_t)}$\biggr) \nabla_{\theta_t} Q(s,a; \theta_t) \biggr]$
 
 \subsection{Model-based methods}
 

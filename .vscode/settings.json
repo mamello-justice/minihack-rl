@@ -1,6 +1,8 @@
 {
     "jupyter.jupyterServerType": "local",
     "cSpell.words": [
+        "argmax",
+        "argmin",
         "cntformat",
         "ifundefined",
         "minihack",
