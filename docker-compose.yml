@@ -3,7 +3,17 @@ version: '3'
 services:
   minihack:
     build: .
-    command: python /app/minihack/main.py
+    container_name: minihack
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=Africa/Johannesburg
+    - KEYBOARD=en-us-qwerty
     volumes:
+      - ./config:/config
       - ./:/app
-    
+    ports:
+      - 3000:3000
+    shm_size: "1gb"
+    security_opt:
+      - seccomp:unconfined

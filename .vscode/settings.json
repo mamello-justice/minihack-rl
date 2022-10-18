@@ -1,11 +1,20 @@
 {
+    "editor.formatOnSave": true,
     "jupyter.jupyterServerType": "local",
     "cSpell.words": [
         "argmax",
         "argmin",
         "cntformat",
         "ifundefined",
+        "imshow",
+        "keymaps",
         "minihack",
-        "seccntformat"
+        "seccntformat",
+        "tobytes",
+        "xaxis",
+        "xlabel",
+        "xticklabels",
+        "yaxis",
+        "yticklabels"
     ]
 }
