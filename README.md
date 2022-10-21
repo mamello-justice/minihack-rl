@@ -8,7 +8,12 @@
 
 ### Develop
 
-1. Clone repository `git clone https://`
+1. Clone repository
+
+    ```bash
+    git clone https://github.com/mamello-justice/minihack-rl.git
+    ```
+
 2. Create a wip/development branch
 3. Push branch to Github
 4. Create Pull Request (PR) and ping in group on discord for review
