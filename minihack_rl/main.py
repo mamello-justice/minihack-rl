@@ -1,16 +1,20 @@
-#!/bin/python
-
 import argparse
 import gym
 import minihack
+
 from environments.human import HumanEnv
 
+from dqn.train import train as train_dqn
 
-def main():
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=f'MiniHack')
     parser.add_argument('--human',
                         action='store_true',
                         help='Render in human mode')
+    parser.add_argument('--n-replay', )
+
+    method_group = parser.add_mutually_exclusive_group(required=True)
+    method_group.add_argument('--dqn', action='store_true')
 
     args = vars(parser.parse_args())
 
@@ -20,16 +24,9 @@ def main():
     if args['human']:
         env = HumanEnv(env)
 
-    state = env.reset()
-    env.render(False)
+    if args['human']:
+        state = env.reset()
+        env.render(False)
 
-    for i in range(10000):
-        action = env.action_space.sample()
-        state_, reward, done, _ = env.step(action)
-
-        if done:
-            break
-
-
-if __name__ == "__main__":
-    main()
+    if args['dqn']:
+        train_dqn(env, args)
