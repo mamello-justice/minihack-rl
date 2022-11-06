@@ -40,5 +40,5 @@ minihack-d3qn:
   logger_config:
     wandb:
       project: "minihack-rl"
-      group: "coms-4061a-team"
+      group: "dqn"
       api_key_file: ./wandb_api_key_file

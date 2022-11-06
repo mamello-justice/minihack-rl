@@ -477,4 +477,5 @@ cython_debug/
 config/*
 !config/.gitkeep
 
+notebooks/results/*
 notebooks/wandb_api_key_file
