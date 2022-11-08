@@ -3,7 +3,7 @@ minihack-d3qn:
   framework: torch
   num_gpus: 1
   env_config:
-    obs_keys: pixel
+    obs_keys: pixel,glyphs,colors
     input_shape:
       width: 640
       height: 480
