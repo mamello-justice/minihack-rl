@@ -474,10 +474,11 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/latex,python
 
+# Used by docker to persist container data
 config/*
 !config/.gitkeep
 
-notebooks/results/*
-
-**/outputs/*
-graph/**
+# Outputs
+outputs/*
+graph/*
+logs/*
