@@ -11,7 +11,10 @@
 1. Clone repository
 
    ```bash
-   git clone https://github.com/mamello-justice/minihack-rl.git
+   git clone --recurse-submodules https://github.com/mamello-justice/minihack-rl.git
+
+   # If you forget to include the --recurse-submodules
+   git submodule update --init --recursive
    ```
 
 2. Create a wip/development branch
