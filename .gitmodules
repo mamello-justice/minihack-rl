@@ -1,0 +1,6 @@
+[submodule "third_party/nle"]
+	path = third_party/nle
+	url = https://github.com/facebookresearch/nle.git
+[submodule "third_party/minihack"]
+	path = third_party/minihack
+	url = https://github.com/facebookresearch/minihack.git

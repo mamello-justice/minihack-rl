@@ -476,3 +476,7 @@ cython_debug/
 
 config/*
 !config/.gitkeep
+
+notebooks/results/*
+
+**/outputs/*
