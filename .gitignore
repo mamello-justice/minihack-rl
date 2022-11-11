@@ -480,3 +480,4 @@ config/*
 notebooks/results/*
 
 **/outputs/*
+graph/**

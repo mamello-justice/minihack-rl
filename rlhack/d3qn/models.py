@@ -220,6 +220,7 @@ class BaseNet(NetHackNet):
 
         self.num_features = NUM_FEATURES
 
+        print("Crop", self.H, self.W, self.crop_dim, self.crop_dim)
         self.crop = Crop(self.H, self.W, self.crop_dim, self.crop_dim)
 
         self.glyph_type = flags["glyph_type"]
@@ -269,6 +270,8 @@ class BaseNet(NetHackNet):
                 device=None,
             )
         elif self.crop_model == "cnn":
+            for i in range(L):
+                print("Conv2d", i, in_channels[i], out_channels[i])
             conv_extract_crop = [
                 nn.Conv2d(
                     in_channels=in_channels[i],
@@ -357,6 +360,7 @@ class BaseNet(NetHackNet):
         elif self.msg_model != "none":
             raise NotImplementedError("msg.model == %s", flags["msg"]["model"])
 
+        print("Embed features", self.num_features, self.k_dim, self.k_dim)
         self.embed_features = nn.Sequential(
             nn.Linear(self.num_features, self.k_dim),
             nn.ReLU(),
@@ -453,8 +457,10 @@ class BaseNet(NetHackNet):
         elif self.crop_model == "cnn":
             # -- [B x K x W' x H']
             crop_emb = crop_emb.transpose(1, 3)
+            print(crop_emb.shape)
             # -- [B x W' x H' x K]
             crop_rep = self.extract_crop_representation(crop_emb)
+            print(crop_rep.shape)
 
         # -- [B x K']
         crop_rep = crop_rep.view(B, -1)
